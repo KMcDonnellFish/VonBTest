@@ -59,7 +59,7 @@ dater[dater[,"weight"]<exp(LW_predint[,"lwr"]) | dater[,"weight"]>exp(LW_predint
 
 #Plot it out to double check
 windows()
-  colz<-c("darkgrey","pink")
+  colz<-c("darkgrey","purple")
   out_index<-dater[,"outlier"]==1
   plot(dater[!out_index,"lengthz"],dater[!out_index,"weight"],pch=19,col=adjustcolor(colz[1],0.1),xlab="length (mm)",ylab = "weight (g)")
   points(dater[out_index,"lengthz"],dater[out_index,"weight"],pch=19,col=adjustcolor(colz[2],0.1))
