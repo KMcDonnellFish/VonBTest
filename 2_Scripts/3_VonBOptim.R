@@ -53,29 +53,29 @@ dev.off()
 ##########################
 #Bayesian via RTMB Method#
 ##########################
-# params<-list(Linf=500,
-#               k=0.1,
-#               t0=0,
-#               sdeps=25)
-# TapeConfig(comparison = "tape")
-# obj<-MakeADFun(func = VonBFUN_Bayes,parameters = params)
-# opt<-nlminb(start = obj$par,objective = obj$fn,gradient = obj$gr)
-# opt
-# 
-# #Check out initital result
-# windows()
-# plot(dater[,"age"],dater[,"lengthz"],ylim=c(0,750),col=adjustcolor("lightgrey",0.25),pch=19)
-# curve(opt$par["Linf"]*(1-exp(-opt$par["k"]*(x-opt$par["t0"]))),from=0,to=25,col="red",add=TRUE,lwd=2,lty=2)
-# 
-# #Use initial result as starting point for sampling posterior
-# post_samps<-tmbstan(obj = obj,iter=2500,init="last.par.best",chains=3,thin=1)
-# summary(post_samps) #Same results but with error estimates!
-# 
-# #check convergence
-# windows()
-# traceplot(post_samps,inc_warmup = TRUE)
-# windows()
-# plot(post_samps,plotfun="hist")
+params<-list(Linf=500,
+              k=0.1,
+              t0=0,
+              sdeps=25)
+TapeConfig(comparison = "tape")
+obj<-MakeADFun(func = VonBFUN_Bayes,parameters = params)
+opt<-nlminb(start = obj$par,objective = obj$fn,gradient = obj$gr)
+opt
+
+#Check out initital result
+windows()
+plot(dater[,"age"],dater[,"lengthz"],ylim=c(0,750),col=adjustcolor("lightgrey",0.25),pch=19)
+curve(opt$par["Linf"]*(1-exp(-opt$par["k"]*(x-opt$par["t0"]))),from=0,to=25,col="red",add=TRUE,lwd=2,lty=2)
+
+#Use initial result as starting point for sampling posterior
+post_samps<-tmbstan(obj = obj,iter=2500,init="last.par.best",chains=3,thin=1)
+summary(post_samps) #Same results but with error estimates!
+
+#check convergence
+windows()
+traceplot(post_samps,inc_warmup = TRUE)
+windows()
+plot(post_samps,plotfun="hist")
 
 
 
